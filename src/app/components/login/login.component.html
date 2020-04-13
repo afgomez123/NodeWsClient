@@ -1,0 +1,44 @@
+<form>
+    <div class="col-md-6" style="margin-top: 10%;margin-left: 25%;margin-right: 30%;">
+        <div class="card text-center">
+            <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
+                <title>Login</title>
+                Login
+
+            </div>
+            <img styles="width:10%;" class="" [src]="['https://library.kissclipart.com/20180903/bwe/kissclipart-login-png-clipart-user-computer-icons-a59899d3a10c7dde.jpg']" height="300px">
+
+            <div class="card-body">
+
+                <div class="form-group">
+                    <input required minlength="3" maxlength="10" pattern="bannana" type="text" ngModel name="user" placeholder="User" #user="ngModel" (change)="log(user)" class="form-control" autofocus>
+                    <div class="alert alert-danger" *ngIf="user.touched && !user.valid">
+                        <div *ngIf="user.errors.required">User is required</div>
+                        <div *ngIf="user.errors.minlength">user should be minimun 3 characteres</div>
+                        <div *ngIf="user.errors.pattern">No cumple</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <input type="password" name="pass" placeholder="Password" class="form-control" autofocus>
+                </div>
+
+
+                <button class="btn btn-info btn-block">
+          Enter
+        </button>
+
+                <button (click)="onAdd()">agregar</button>
+
+                <ul>
+                    <li *ngFor="let course of courses; index as i">
+                        {{course.name}}
+
+                        <button (click)="onRemove(course)">quitar</button>
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+    </div>
+
+</form>
